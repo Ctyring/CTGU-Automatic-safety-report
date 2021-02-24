@@ -23,5 +23,7 @@ jobs:
         with:
           python-version: 3.7
       - name: 报平安ing
+        env:
+          password: ${{ secrets.PASSWORD }}
         run: |
           python3 main.py
