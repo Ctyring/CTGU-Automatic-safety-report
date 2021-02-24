@@ -1,5 +1,6 @@
 import requests
 from lxml import etree
+import os
 session = requests.session()
 url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
 files = {'upload': open('test.txt', 'rb')}
