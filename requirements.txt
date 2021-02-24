@@ -2,4 +2,3 @@ BeautifulSoup4
 requests
 pycryptodome
 lxml
-os
