@@ -5,21 +5,26 @@ session = requests.session()
 url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
 files = {'upload': open('test.txt', 'rb')}
 username = '2020112805'
-password = eval(os.environ['PASSWORD'])
+password = os.environ['password']
+ip = os.environ['ip']
 data = {
     'username': username,
     'password': password,
+}
+proxies = {
+    'http':ip,
+    'https':ip,
 }
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',
     'Referer': 'http://yiqing.ctgu.edu.cn/wx/index/login.do?currSchool=ctgu&CURRENT_YEAR=2019&showWjdc=false&studentShowWjdc=false',
 }
-response = session.post(url = url,params=data,files=files,headers = headers)
+response = session.post(url = url,params=data,files=files,headers = headers,proxies = proxies)
 headers2 = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',
     'Referer': 'http://yiqing.ctgu.edu.cn/wx/health/main.do',
 }
-res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2).text
+res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2,proxies=proxies).text
 tree = etree.HTML(res)
 token = tree.xpath('/html/body/main/section/form/input[1]/@value')
 headers3 = {
@@ -56,5 +61,5 @@ data2 = {
     'sffx':	'否',
     'qt':'',
 }
-res2 = session.post('http://yiqing.ctgu.edu.cn/wx/health/saveApply.do',headers = headers3,data = data2)
+res2 = session.post('http://yiqing.ctgu.edu.cn/wx/health/saveApply.do',headers = headers3,data = data2,proxies=proxies)
 print(res2)
