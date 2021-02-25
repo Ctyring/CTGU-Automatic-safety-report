@@ -1,4 +1,4 @@
-name: 自动报平安
+name: 安全上报
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [master]
   schedule:
     # - cron: 0 22,14 * * * 北京时间每天8点自动执行
-    - cron: 0 21,13  * * *
+    - cron: 0 22,14  * * *
   watch:
     types: started
 
@@ -26,4 +26,6 @@ jobs:
         env:
           password: ${{ secrets.PASSWORD }}
         run: |
+          pip install -r requirements.txt
+          echo 开始报平安
           python3 main.py

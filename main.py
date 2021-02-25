@@ -6,7 +6,10 @@ url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
 files = {'upload': open('test.txt', 'rb')}
 username = '2020112805'
 password = os.environ['password']
+<<<<<<< HEAD
 ip = os.environ['ip']
+=======
+>>>>>>> 33d19b1eb2fe6aceed87befb7789e9730fc60902
 data = {
     'username': username,
     'password': password,
