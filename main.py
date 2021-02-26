@@ -25,7 +25,6 @@ headers2 = {
     'Referer': 'http://yiqing.ctgu.edu.cn/wx/health/main.do',
 }
 res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2,proxies=proxies).text
-print(res)
 tree = etree.HTML(res)
 token = tree.xpath('/html/body/main/section/form/input[1]/@value')
 headers3 = {
