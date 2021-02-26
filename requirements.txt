@@ -1,4 +1,4 @@
 BeautifulSoup4
 requests
 pycryptodome
-lxml
+lxml==4.4.4
