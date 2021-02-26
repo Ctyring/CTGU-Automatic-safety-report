@@ -7,6 +7,7 @@ files = {'upload': open('test.txt', 'rb')}
 username = '2020112805'
 password = os.environ['password']
 ip = os.environ['ip']
+username = os.environ['user']
 data = {
     'username': username,
     'password': password,
