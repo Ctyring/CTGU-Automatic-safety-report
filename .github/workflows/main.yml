@@ -27,6 +27,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           ip: ${{ secrets.IP }}
           user: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
         run: |
           pip install -r requirements.txt
           echo 开始报平安
