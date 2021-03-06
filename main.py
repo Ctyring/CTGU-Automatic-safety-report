@@ -5,10 +5,8 @@ session = requests.session()
 url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
 files = {'upload': open('test.txt', 'rb')}
 password = os.environ['password']
-username = os.environ['username']
 ip = os.environ['ip']
 key = os.environ['key']
-ip = os.environ['ip']
 username = os.environ['user']
 data = {
     'username': username,
