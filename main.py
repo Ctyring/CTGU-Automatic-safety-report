@@ -4,12 +4,10 @@ import os
 session = requests.session()
 url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
 files = {'upload': open('test.txt', 'rb')}
-username = '2020112805'
 password = os.environ['password']
-<<<<<<< HEAD
+username = os.environ['username']
 ip = os.environ['ip']
-=======
->>>>>>> 33d19b1eb2fe6aceed87befb7789e9730fc60902
+key = os.environ['key']
 data = {
     'username': username,
     'password': password,
@@ -27,7 +25,7 @@ headers2 = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',
     'Referer': 'http://yiqing.ctgu.edu.cn/wx/health/main.do',
 }
-res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2,proxies=proxies).text
+res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2,proxies = proxies).text
 tree = etree.HTML(res)
 token = tree.xpath('/html/body/main/section/form/input[1]/@value')
 headers3 = {
@@ -64,5 +62,9 @@ data2 = {
     'sffx':	'否',
     'qt':'',
 }
-res2 = session.post('http://yiqing.ctgu.edu.cn/wx/health/saveApply.do',headers = headers3,data = data2,proxies=proxies)
-print(res2)
+res2 = session.post('http://yiqing.ctgu.edu.cn/wx/health/saveApply.do',headers = headers3,data = data2,proxies = proxies)
+
+if(res2.status_code != 200):
+    url = 'https://qmsg.zendee.cn/send/' + key
+    msg = '安全上班出错了哎┭┮﹏┭┮请检查是否重复上报'
+    requests.post(url=url,data=msg)
