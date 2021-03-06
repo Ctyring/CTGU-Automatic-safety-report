@@ -25,6 +25,8 @@ jobs:
       - name: 报平安ing
         env:
           password: ${{ secrets.PASSWORD }}
+          ip: ${{ secrets.IP }}
+          user: ${{ secrets.USER }}
         run: |
           pip install -r requirements.txt
           echo 开始报平安
