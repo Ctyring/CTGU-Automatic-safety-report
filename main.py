@@ -66,5 +66,5 @@ res2 = session.post('http://yiqing.ctgu.edu.cn/wx/health/saveApply.do',headers =
 
 if(res2.status_code != 200):
     url = 'https://qmsg.zendee.cn/send/' + key
-    msg = '安全上班出错了哎┭┮﹏┭┮请检查是否重复上报'
+    msg = '安全上报出错了哎┭┮﹏┭┮请检查是否重复上报'
     requests.post(url=url,data=msg)
