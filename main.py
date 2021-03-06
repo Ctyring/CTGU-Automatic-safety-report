@@ -26,7 +26,7 @@ headers2 = {
     'Referer': 'http://yiqing.ctgu.edu.cn/wx/health/main.do',
 }
 res = session.get('http://yiqing.ctgu.edu.cn/wx/health/toApply.do',headers = headers2,proxies = proxies).text
-tree = html.etree(res)
+tree = html.etree.HTML(res)
 token = tree.xpath('/html/body/main/section/form/input[1]/@value')
 headers3 = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',
